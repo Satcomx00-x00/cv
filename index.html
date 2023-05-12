@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Satcom CV's/title>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hackcss@2.2.2/dist/hack.min.css">
+    </head>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .hack-h1 {
+            text-align: center;
+            color: #f00;
+            font-size: 32px;
+        }
+
+        .hack-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #0f0;
+        }
+
+        .hack-card {
+            flex-basis: 300px;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #0f0;
+            background-color: #111;
+        }
+
+        .hack-btn {
+            margin-top: 10px;
+        }
+
+        .hack-btn-large {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .hack-card-expand {
+            display: none;
+            padding: 10px;
+            background-color: #222;
+            margin-top: 10px;
+        }
+
+        .hack-card-expand-active {
+            display: block;
+        }
+
+        .hack-loading {
+            width: 100%;
+            height: 2px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #0f0;
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+
+        .hack-loading-bar {
+            height: 100%;
+            background-color: #0f0;
+            width: 0;
+            animation: hack-loading 1s infinite;
+        }
+
+        @keyframes hack-loading {
+            0% {
+                width: 0;
+            }
+
+            50% {
+                width: 50%;
+            }
+
+            100% {
+                width: 0;
+            }
+        }
+    </style>
+
+    <body>
+        <h1 class="hack-h1">Satcom CV's</h1>
+        <div class="hack-container">
+            <div class="hack-card">
+                <h2>About Me</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <button class="hack-btn hack-btn-large">Expand</button>
+                <div class="hack-card-expand">
+                    <p>Additional details about me...</p>
+                </div>
+            </div>
+            <div class="hack-card">
+                <h2>Education</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <button class="hack-btn hack-btn-large">Expand</button>
+                <div class="hack-card-expand">
+                    <p>Additional details about my education...</p>
+                </div>
+            </div>
+            <div class="hack-card">
+                <h2>Experience</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <button class="hack-btn hack-btn-large">Expand</button>
+                <div class="hack-card-expand">
+                    <p>Additional details about my experience...</p>
+                </div>
+            </div>
+            <div class="hack-card">
+                <h2>Skills</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <button class="hack-btn hack-btn-large">Expand</button>
+                <div class="hack-card-expand">
+                    <p>Additional details about my skills...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="hack-page-loading" class="hack-loading">
+            <div class="hack-loading-bar"></div>
+        </div>
+
+        <script>
+            // Show page loading animation on initial load
+            window.addEventListener('load', function () {
+                var pageLoading = document.getElementById('hack-page-loading');
+                pageLoading.style.display = 'none';
+            });
+
+            var buttons = document.getElementsByClassName('hack-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function () {
+                    var expand = this.nextElementSibling;
+                    expand.classList.toggle('hack-card-expand-active');
+
+                    // Show loading animation when expanding a card
+                    var loadingBar = document.createElement('div');
+                    loadingBar.classList.add('hack-loading-bar');
+                    expand.appendChild(loadingBar);
+
+                    setTimeout(function () {
+                        expand.removeChild(loadingBar);
+                    }, 1500);
+                });
+            }
+        </script>
+    </body>
+
+</html>
